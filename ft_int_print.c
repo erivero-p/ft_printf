@@ -6,18 +6,12 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 10:03:58 by erivero-          #+#    #+#             */
-/*   Updated: 2023/05/01 11:16:47 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:09:22 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	<unistd.h>
 #include "ft_printf.h"
-
-/* int	ft_puchero(char c)
-{
-	write(1, &c, 1);
-	return (1);
-} */
 
 static int	ft_count(int nb)
 {

@@ -6,7 +6,7 @@
 #    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 09:30:04 by erivero-          #+#    #+#              #
-#    Updated: 2023/05/01 10:05:25 by erivero-         ###   ########.fr        #
+#    Updated: 2023/05/05 15:44:23 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(OBJECTS): $(FILES)
 clean:
 	@rm -f $(OBJECTS)
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
