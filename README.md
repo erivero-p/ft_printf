@@ -1,6 +1,5 @@
 # ft_printf
-why not print
-
+Printf, pero en plan regular.
 <h3>Project Tree</h3>
   
  ```
