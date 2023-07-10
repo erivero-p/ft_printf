@@ -6,7 +6,7 @@
 #    By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 09:30:04 by erivero-          #+#    #+#              #
-#    Updated: 2023/05/05 15:44:23 by erivero-         ###   ########.fr        #
+#    Updated: 2023/07/10 11:24:19 by erivero-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ FLAGS = -Werror -Wall -Wextra
 all: $(NAME)
 $(NAME): $(OBJECTS)
 	@ar rcs $(NAME) $(OBJECTS)
-$(OBJECTS): $(FILES)
-	@gcc $(FLAGS) -c $(FILES)
+%.o: %.c
+	@gcc $(FLAGS) -c $< -o $@
 clean:
 	@rm -f $(OBJECTS)
 fclean: clean
