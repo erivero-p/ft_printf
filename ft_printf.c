@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:37:50 by erivero-          #+#    #+#             */
-/*   Updated: 2024/04/30 15:52:30 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:57:44 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_printf(char const *fix, ...)
 	return (count);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 int main()
 {
 	int ret_printf, ret_ft_printf;
@@ -70,6 +70,5 @@ int main()
 
 	printf("Return value of printf: %d\n", ret_printf);
 	printf("Return value of ft_printf: %d\n", ret_ft_printf);
-	ft_printf("a ver: %o\n");
 	return (0);
-}
+} */
