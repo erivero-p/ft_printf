@@ -10,7 +10,7 @@ Printf, pero en plan regular.
 ├── ft_printf.c
 ├── ft_printf.h
 ├── ft_ptr_print.c
-├── ft_puchero.c
+├── print_char.c
 ├── ft_str_print.c
 └── ft_unsign_print.c
   ```

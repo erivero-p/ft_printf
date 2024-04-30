@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:37:50 by erivero-          #+#    #+#             */
-/*   Updated: 2023/05/01 12:51:32 by erivero-         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:52:30 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,26 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-int	ft_filter(char const *fix, int i, va_list *arg)
+void	ft_filter(char const *fix, int i, va_list *arg, int *count)
 {
-	int	count;
-
-	count = 0;
 	if (fix[i] == 'c')
-		count += ft_puchero(va_arg(*arg, int));
+		*count += print_char(va_arg(*arg, int));
 	if (fix[i] == 's')
-		count += ft_str_print(va_arg(*arg, char *));
+		print_str(va_arg(*arg, char *), count);
 	if (fix[i] == 'u')
-		count += ft_unsign_print(va_arg(*arg, unsigned int));
+		print_base((long long int)va_arg(*arg, unsigned int), 10, count, 0);
 	if (fix[i] == 'i')
-		count += ft_int_print(va_arg(*arg, int));
+		print_base((long long int)va_arg(*arg, int), 10, count, 0);
 	if (fix[i] == 'd')
-		count += ft_int_print(va_arg(*arg, int));
-	if (fix[i] == 'x' || fix[i] == 'X')
-		count += ft_hexa_print(va_arg(*arg, unsigned int), fix[i]);
+		print_base((long long int)va_arg(*arg, int), 10, count, 0);
+	if (fix[i] == 'x')
+		print_base((long long int)va_arg(*arg, unsigned int), 16, count, 0);
+	if (fix[i] == 'X')
+		print_base((long long int)va_arg(*arg, unsigned int), 16, count, 1);
 	if (fix[i] == 'p')
-		count += ft_ptr_print(va_arg(*arg, unsigned long long));
+		print_ptr(va_arg(*arg, unsigned long long),count);
 	if (fix[i] == '%')
-		count += ft_puchero('%');
-	return (count);
+		*count += print_char('%');
 }
 
 int	ft_printf(char const *fix, ...)
@@ -50,11 +48,11 @@ int	ft_printf(char const *fix, ...)
 	while (fix[i])
 	{
 		if (fix[i] != '%')
-			count += ft_puchero(fix[i]);
+			count += print_char(fix[i]);
 		else
 		{
 			i++;
-			count += ft_filter(fix, i, &arg);
+			ft_filter(fix, i, &arg, &count);
 		}
 		i++;
 	}
@@ -62,12 +60,16 @@ int	ft_printf(char const *fix, ...)
 	return (count);
 }
 
-/* #include <stdio.h>
-int	main(void)
+#include <stdio.h>
+int main()
 {
-	int c = 421;
-	int i = 0;
-	//ft_printf("El resultado es %i", c);
-	i = ft_printf("%i", c);
-	printf("%i", i);
-} */
+	int ret_printf, ret_ft_printf;
+
+	ret_printf = printf("%c %s %p %d %i %u %x %X %%\n", 'A', "Hello", (void *)123, 123, -456, 789, 255, 255);
+	ret_ft_printf = ft_printf("%c %s %p %d %i %u %x %X %%\n", 'A', "Hello", (void *)123, 123, -456, 789, 255, 255);
+
+	printf("Return value of printf: %d\n", ret_printf);
+	printf("Return value of ft_printf: %d\n", ret_ft_printf);
+	ft_printf("a ver: %o\n");
+	return (0);
+}

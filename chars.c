@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_print.c                                     :+:      :+:    :+:   */
+/*   chars.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 10:36:30 by erivero-          #+#    #+#             */
-/*   Updated: 2023/05/01 10:28:30 by erivero-         ###   ########.fr       */
+/*   Created: 2023/04/28 10:53:19 by erivero-          #+#    #+#             */
+/*   Updated: 2024/04/30 15:26:28 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "ft_printf.h"
 
-int	ft_str_print(char *str)
+int	print_char(char c)
 {
-	int	i;
+	write(1, &c, 1);
+	return (1);
+}
 
-	i = 0;
+void	print_str(char *str, int *count)
+{
 	if (!str)
-		return (ft_str_print("(null)"));
-	while (str[i])
+		str = "(null)";
+	while (*str)
 	{
-		ft_puchero(str[i]);
-		i++;
+		*count += print_char(*str);
+		str++;
 	}
-	return (i);
 }
